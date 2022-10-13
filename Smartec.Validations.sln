@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AE1EE76D-5E84-4A85-8A09-EE1C2DCCBBEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartec.Validations", "src\Smartec.Validations\Smartec.Validations.csproj", "{A8A2144C-2751-4C17-9978-4A2F9D41E563}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8A2144C-2751-4C17-9978-4A2F9D41E563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A2144C-2751-4C17-9978-4A2F9D41E563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A2144C-2751-4C17-9978-4A2F9D41E563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A2144C-2751-4C17-9978-4A2F9D41E563}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A8A2144C-2751-4C17-9978-4A2F9D41E563} = {AE1EE76D-5E84-4A85-8A09-EE1C2DCCBBEF}
+	EndGlobalSection
+EndGlobal
