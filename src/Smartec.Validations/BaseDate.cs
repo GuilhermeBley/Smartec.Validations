@@ -111,7 +111,22 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
 
     public object ToType(Type conversionType, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (this.GetType().Equals(conversionType) 
+            || conversionType.Equals(typeof(object)))
+            return this;
+
+        if (conversionType.Equals(typeof(DateTime)))
+            return ToDateTime(provider);
+
+        if (conversionType.Equals(typeof(long)))
+            return ToInt64(provider);
+
+        throw new ArgumentException("Invalid type.", $"{nameof(conversionType)}");
+    }
+
+    public object ToType(Type conversionType)
+    {
+        return ToType(conversionType, null);
     }
 
     public override string ToString()
