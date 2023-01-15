@@ -35,16 +35,16 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
     /// <param name="month">month</param>
     /// <param name="year">year</param>
     /// <exception cref="ArgumentOutOfRangeException"/>
-    public BaseDate(int month, int year)
+    public BaseDate(int year, int month)
     {
-        _date = new DateTime(ConstDay, month, year);
+        _date = new DateTime(year, month, ConstDay);
     }
 
     /// <summary>
     /// Initializes with datetime
     /// </summary>
     public BaseDate(DateTime baseDate)
-        : this(baseDate.Month, baseDate.Year)
+        : this(baseDate.Year, baseDate.Month)
     {
     }
 
