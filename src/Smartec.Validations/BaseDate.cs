@@ -193,80 +193,66 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
     {
         return t1.ToDateTime() >= t2.ToDateTime();
     }
-
-    #region Obsolete
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public ushort ToUInt16(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToUInt16(_date, provider);
     }
 
-    [Obsolete("Invalid conversion.", true)]
+    
     public uint ToUInt32(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToUInt32(_date, provider);
     }
 
-    [Obsolete("Invalid conversion.", true)]
+    
     public ulong ToUInt64(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToUInt64(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public bool ToBoolean(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToBoolean(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public decimal ToDecimal(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToDecimal(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public double ToDouble(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToDouble(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public short ToInt16(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToInt16(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public int ToInt32(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToInt32(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public sbyte ToSByte(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToSByte(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public float ToSingle(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToSingle(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public byte ToByte(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToByte(_date, provider);
     }
-
-    [Obsolete("Invalid conversion.", true)]
+    
     public char ToChar(IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        return Convert.ToChar(_date, provider);
     }
-
-    #endregion
 }
