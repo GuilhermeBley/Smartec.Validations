@@ -146,6 +146,10 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
 
     public int CompareTo(object? obj)
     {
+        if (obj is null)
+            return 1;
+        if (obj is BaseDate)
+            return _date.CompareTo(((BaseDate)obj)._date);
         return _date.CompareTo(obj);
     }
 
