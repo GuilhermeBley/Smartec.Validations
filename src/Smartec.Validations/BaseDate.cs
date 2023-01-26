@@ -233,6 +233,8 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IComp
         return Convert.ToUInt16(_date, provider);
     }
 
+#region Operator BaseDate|BaseDate
+
     public static bool operator ==(BaseDate d1, BaseDate d2)
     {
         return d1.ToDateTime() == d2.ToDateTime();
@@ -262,4 +264,71 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IComp
     {
         return t1.ToDateTime() >= t2.ToDateTime();
     }
+#endregion
+
+#region  Operator DateTime|BaseDate
+
+    public static bool operator ==(DateTime d1, BaseDate d2)
+    {
+        return d1 == d2.ToDateTime();
+    }
+
+    public static bool operator !=(DateTime d1, BaseDate d2)
+    {
+        return d1 != d2.ToDateTime();
+    }
+
+    public static bool operator <(DateTime t1, BaseDate t2)
+    {
+        return t1 < t2.ToDateTime();
+    }
+
+    public static bool operator >(DateTime t1, BaseDate t2)
+    {
+        return t1 > t2.ToDateTime();
+    }
+
+    public static bool operator <=(DateTime t1, BaseDate t2)
+    {
+        return t1 <= t2.ToDateTime();
+    }
+
+    public static bool operator >=(DateTime t1, BaseDate t2)
+    {
+        return t1 >= t2.ToDateTime();
+    }
+#endregion
+
+#region  Operator BaseDate|DateTime
+
+    public static bool operator ==(BaseDate d1, DateTime d2)
+    {
+        return d1.ToDateTime() == d2;
+    }
+
+    public static bool operator !=(BaseDate d1, DateTime d2)
+    {
+        return d1.ToDateTime() != d2;
+    }
+
+    public static bool operator <(BaseDate t1, DateTime t2)
+    {
+        return t1.ToDateTime() < t2;
+    }
+
+    public static bool operator >(BaseDate t1, DateTime t2)
+    {
+        return t1.ToDateTime() > t2;
+    }
+
+    public static bool operator <=(BaseDate t1, DateTime t2)
+    {
+        return t1.ToDateTime() <= t2;
+    }
+
+    public static bool operator >=(BaseDate t1, DateTime t2)
+    {
+        return t1.ToDateTime() >= t2;
+    }
+#endregion
 }
