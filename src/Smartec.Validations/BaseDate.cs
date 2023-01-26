@@ -5,9 +5,9 @@ namespace Smartec.Validations;
 public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEquatable<BaseDate>, ISpanFormattable, IFormattable
 {
     public const int ConstDay = 1;
-    private static readonly BaseDate _minBaseDate = new BaseDate(DateTime.MinValue.Month, DateTime.MinValue.Year);
-    private static readonly BaseDate _maxBaseDate = new BaseDate(DateTime.MaxValue.Month, DateTime.MaxValue.Year);
-    private static BaseDate _now => new BaseDate(DateTime.Now.Month, DateTime.Now.Year);
+    private static readonly BaseDate _minBaseDate = new BaseDate(DateTime.MinValue);
+    private static readonly BaseDate _maxBaseDate = new BaseDate(DateTime.MaxValue);
+    private static BaseDate _now => new BaseDate(DateTime.Now);
     public static BaseDate MinBaseDate => _minBaseDate;
     public static BaseDate MaxBaseDate => _maxBaseDate;
     public static BaseDate Now => _now;
