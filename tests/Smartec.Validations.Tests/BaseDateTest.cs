@@ -193,4 +193,134 @@ public class BaseDateTest
         BaseDate? bdate = new BaseDate(dtNow);
         Assert.NotEqual(EqualCompare, bdate.Value.CompareTo(dtNow));
     }
+
+    [Fact]
+    public void OperatorEqual_CheckDateTimeAndBaseDate_Success()
+    {
+        var operatorResult = DateTime.MinValue == BaseDate.Now;
+        Assert.False(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorNotEqual_CheckDateTimeAndBaseDate_Success()
+    {
+        var operatorResult = DateTime.MinValue != BaseDate.Now;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorGreaterThan_CheckDateTimeAndBaseDate_Success()
+    {
+        var operatorResult = DateTime.MinValue > BaseDate.Now;
+        Assert.False(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorLessThan_CheckDateTimeAndBaseDate_Success()
+    {
+        var operatorResult = DateTime.MinValue < BaseDate.Now;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorGreaterThanOrEqual_CheckDateTimeAndBaseDate_Success()
+    {
+        var operatorResult = DateTime.MaxValue >= BaseDate.Now;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorLessThanOrEqual_CheckDateTimeAndBaseDate_Success()
+    {
+        var operatorResult = DateTime.MinValue <= BaseDate.Now;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorEqual_CheckBaseDateAndDateTime_Success()
+    {
+        var dTime = new DateTime(2000, 1, 1);
+        var bDate = new BaseDate(dTime);
+        var operatorResult = bDate == dTime;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorNotEqual_CheckBaseDateAndDateTime_Success()
+    {
+        var operatorResult = BaseDate.Now != DateTime.MaxValue;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorGreaterThan_CheckBaseDateAndDateTime_Success()
+    {
+        var operatorResult = BaseDate.Now > DateTime.MinValue;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorLessThan_CheckBaseDateAndDateTime_Success()
+    {
+        var operatorResult = BaseDate.Now > DateTime.MinValue;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorGreaterThanOrEqual_CheckBaseDateAndDateTime_Success()
+    {
+        var operatorResult = BaseDate.Now  >= DateTime.MaxValue;
+        Assert.False(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorLessThanOrEqual_CheckBaseDateAndDateTime_Success()
+    {
+        var dTime = new DateTime(2000, 1, 1);
+        var bDate = new BaseDate(dTime);
+        var operatorResult = bDate <= dTime;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorEqual_CheckBaseDate_Success()
+    {
+        var operatorResult = BaseDate.MinBaseDate == BaseDate.MinBaseDate;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorNotEqual_CheckBaseDate_Success()
+    {
+        var operatorResult = BaseDate.MinBaseDate != BaseDate.MaxBaseDate;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorGreaterThan_CheckBaseDate_Success()
+    {
+        var operatorResult = BaseDate.MinBaseDate > BaseDate.MaxBaseDate;
+        Assert.False(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorLessThan_CheckBaseDate_Success()
+    {
+        var operatorResult = BaseDate.Now > BaseDate.MinBaseDate;
+        Assert.True(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorGreaterThanOrEqual_CheckBaseDate_Success()
+    {
+        var operatorResult = BaseDate.Now  >= BaseDate.MaxBaseDate;
+        Assert.False(operatorResult);
+    }
+
+    [Fact]
+    public void OperatorLessThanOrEqual_CheckBaseDate_Success()
+    {
+        var operatorResult = BaseDate.Now  <= BaseDate.MaxBaseDate;
+        Assert.True(operatorResult);
+    }
 }
