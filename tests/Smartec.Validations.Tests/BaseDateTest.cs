@@ -24,4 +24,11 @@ public class BaseDateTest
         Assert.Equal(year, baseDate.Year);
         Assert.Equal(month, baseDate.Month);
     }
+
+    [Fact]
+    public void Now_CheckIfIsValidDate_Success()
+    {
+        BaseDate? bdate = BaseDate.Now;
+        Assert.NotNull(bdate);
+    }
 }
