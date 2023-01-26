@@ -184,4 +184,13 @@ public class BaseDateTest
         BaseDate? bdate = BaseDate.Now;
         Convert.ToString(bdate);
     }
+
+    [Fact]
+    public void CompareTo_NotEqualValueCompareWithDateTime_Success()
+    {
+        const int EqualCompare = 0;
+        DateTime dtNow = DateTime.Now;
+        BaseDate? bdate = new BaseDate(dtNow);
+        Assert.NotEqual(EqualCompare, bdate.Value.CompareTo(dtNow));
+    }
 }

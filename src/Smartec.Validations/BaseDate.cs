@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Smartec.Validations;
 
-public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEquatable<BaseDate>, ISpanFormattable, IFormattable
+public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IComparable<DateTime>, IEquatable<BaseDate>, ISpanFormattable, IFormattable
 {
     public const int ConstDay = 1;
     private static readonly BaseDate _minBaseDate = new BaseDate(DateTime.MinValue);
@@ -167,48 +167,6 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
     {
         return _date.TryFormat(destination, out charsWritten, format, provider);
     }
-
-    public static bool operator ==(BaseDate d1, BaseDate d2)
-    {
-        return d1.ToDateTime() == d2.ToDateTime();
-    }
-
-    public static bool operator !=(BaseDate d1, BaseDate d2)
-    {
-        return d1.ToDateTime() != d2.ToDateTime();
-    }
-
-    public static bool operator <(BaseDate t1, BaseDate t2)
-    {
-        return t1.ToDateTime() < t2.ToDateTime();
-    }
-
-    public static bool operator >(BaseDate t1, BaseDate t2)
-    {
-        return t1.ToDateTime() > t2.ToDateTime();
-    }
-
-    public static bool operator <=(BaseDate t1, BaseDate t2)
-    {
-        return t1.ToDateTime() <= t2.ToDateTime();
-    }
-
-    public static bool operator >=(BaseDate t1, BaseDate t2)
-    {
-        return t1.ToDateTime() >= t2.ToDateTime();
-    }
-    
-    public ushort ToUInt16(IFormatProvider? provider)
-    {
-        return Convert.ToUInt16(_date, provider);
-    }
-
-    
-    public uint ToUInt32(IFormatProvider? provider)
-    {
-        return Convert.ToUInt32(_date, provider);
-    }
-
     
     public ulong ToUInt64(IFormatProvider? provider)
     {
@@ -258,5 +216,50 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
     public char ToChar(IFormatProvider? provider)
     {
         return Convert.ToChar(_date, provider);
+    }
+
+    public int CompareTo(DateTime other)
+    {
+        return other.CompareTo(_date);
+    }
+    
+    public uint ToUInt32(IFormatProvider? provider)
+    {
+        return Convert.ToUInt32(_date, provider);
+    }
+    
+    public ushort ToUInt16(IFormatProvider? provider)
+    {
+        return Convert.ToUInt16(_date, provider);
+    }
+
+    public static bool operator ==(BaseDate d1, BaseDate d2)
+    {
+        return d1.ToDateTime() == d2.ToDateTime();
+    }
+
+    public static bool operator !=(BaseDate d1, BaseDate d2)
+    {
+        return d1.ToDateTime() != d2.ToDateTime();
+    }
+
+    public static bool operator <(BaseDate t1, BaseDate t2)
+    {
+        return t1.ToDateTime() < t2.ToDateTime();
+    }
+
+    public static bool operator >(BaseDate t1, BaseDate t2)
+    {
+        return t1.ToDateTime() > t2.ToDateTime();
+    }
+
+    public static bool operator <=(BaseDate t1, BaseDate t2)
+    {
+        return t1.ToDateTime() <= t2.ToDateTime();
+    }
+
+    public static bool operator >=(BaseDate t1, BaseDate t2)
+    {
+        return t1.ToDateTime() >= t2.ToDateTime();
     }
 }
