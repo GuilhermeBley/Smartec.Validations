@@ -2,12 +2,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Smartec.Validations;
 
-public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEquatable<BaseDate>, ISpanFormattable, IFormattable
+public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IComparable<DateTime>, IEquatable<BaseDate>, ISpanFormattable, IFormattable
 {
     public const int ConstDay = 1;
-    private static readonly BaseDate _minBaseDate = new BaseDate(DateTime.MinValue.Month, DateTime.MinValue.Year);
-    private static readonly BaseDate _maxBaseDate = new BaseDate(DateTime.MaxValue.Month, DateTime.MaxValue.Year);
-    private static BaseDate _now => new BaseDate(DateTime.Now.Month, DateTime.Now.Year);
+    private static readonly BaseDate _minBaseDate = new BaseDate(DateTime.MinValue);
+    private static readonly BaseDate _maxBaseDate = new BaseDate(DateTime.MaxValue);
+    private static BaseDate _now => new BaseDate(DateTime.Now);
     public static BaseDate MinBaseDate => _minBaseDate;
     public static BaseDate MaxBaseDate => _maxBaseDate;
     public static BaseDate Now => _now;
@@ -146,6 +146,10 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
 
     public int CompareTo(object? obj)
     {
+        if (obj is null)
+            return 1;
+        if (obj is BaseDate)
+            return _date.CompareTo(((BaseDate)obj)._date);
         return _date.CompareTo(obj);
     }
 
@@ -163,6 +167,73 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
     {
         return _date.TryFormat(destination, out charsWritten, format, provider);
     }
+    
+    public ulong ToUInt64(IFormatProvider? provider)
+    {
+        return Convert.ToUInt64(_date, provider);
+    }
+    
+    public bool ToBoolean(IFormatProvider? provider)
+    {
+        return Convert.ToBoolean(_date, provider);
+    }
+    
+    public decimal ToDecimal(IFormatProvider? provider)
+    {
+        return Convert.ToDecimal(_date, provider);
+    }
+    
+    public double ToDouble(IFormatProvider? provider)
+    {
+        return Convert.ToDouble(_date, provider);
+    }
+    
+    public short ToInt16(IFormatProvider? provider)
+    {
+        return Convert.ToInt16(_date, provider);
+    }
+    
+    public int ToInt32(IFormatProvider? provider)
+    {
+        return Convert.ToInt32(_date, provider);
+    }
+    
+    public sbyte ToSByte(IFormatProvider? provider)
+    {
+        return Convert.ToSByte(_date, provider);
+    }
+    
+    public float ToSingle(IFormatProvider? provider)
+    {
+        return Convert.ToSingle(_date, provider);
+    }
+    
+    public byte ToByte(IFormatProvider? provider)
+    {
+        return Convert.ToByte(_date, provider);
+    }
+    
+    public char ToChar(IFormatProvider? provider)
+    {
+        return Convert.ToChar(_date, provider);
+    }
+
+    public int CompareTo(DateTime other)
+    {
+        return other.CompareTo(_date);
+    }
+    
+    public uint ToUInt32(IFormatProvider? provider)
+    {
+        return Convert.ToUInt32(_date, provider);
+    }
+    
+    public ushort ToUInt16(IFormatProvider? provider)
+    {
+        return Convert.ToUInt16(_date, provider);
+    }
+
+#region Operator BaseDate|BaseDate
 
     public static bool operator ==(BaseDate d1, BaseDate d2)
     {
@@ -193,80 +264,71 @@ public struct BaseDate : IConvertible, IComparable, IComparable<BaseDate>, IEqua
     {
         return t1.ToDateTime() >= t2.ToDateTime();
     }
+#endregion
 
-    #region Obsolete
+#region  Operator DateTime|BaseDate
 
-    [Obsolete("Invalid conversion.", true)]
-    public ushort ToUInt16(IFormatProvider? provider)
+    public static bool operator ==(DateTime d1, BaseDate d2)
     {
-        throw new NotImplementedException();
+        return d1 == d2.ToDateTime();
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public uint ToUInt32(IFormatProvider? provider)
+    public static bool operator !=(DateTime d1, BaseDate d2)
     {
-        throw new NotImplementedException();
+        return d1 != d2.ToDateTime();
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public ulong ToUInt64(IFormatProvider? provider)
+    public static bool operator <(DateTime t1, BaseDate t2)
     {
-        throw new NotImplementedException();
+        return t1 < t2.ToDateTime();
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public bool ToBoolean(IFormatProvider? provider)
+    public static bool operator >(DateTime t1, BaseDate t2)
     {
-        throw new NotImplementedException();
+        return t1 > t2.ToDateTime();
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public decimal ToDecimal(IFormatProvider? provider)
+    public static bool operator <=(DateTime t1, BaseDate t2)
     {
-        throw new NotImplementedException();
+        return t1 <= t2.ToDateTime();
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public double ToDouble(IFormatProvider? provider)
+    public static bool operator >=(DateTime t1, BaseDate t2)
     {
-        throw new NotImplementedException();
+        return t1 >= t2.ToDateTime();
+    }
+#endregion
+
+#region  Operator BaseDate|DateTime
+
+    public static bool operator ==(BaseDate d1, DateTime d2)
+    {
+        return d1.ToDateTime() == d2;
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public short ToInt16(IFormatProvider? provider)
+    public static bool operator !=(BaseDate d1, DateTime d2)
     {
-        throw new NotImplementedException();
+        return d1.ToDateTime() != d2;
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public int ToInt32(IFormatProvider? provider)
+    public static bool operator <(BaseDate t1, DateTime t2)
     {
-        throw new NotImplementedException();
+        return t1.ToDateTime() < t2;
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public sbyte ToSByte(IFormatProvider? provider)
+    public static bool operator >(BaseDate t1, DateTime t2)
     {
-        throw new NotImplementedException();
+        return t1.ToDateTime() > t2;
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public float ToSingle(IFormatProvider? provider)
+    public static bool operator <=(BaseDate t1, DateTime t2)
     {
-        throw new NotImplementedException();
+        return t1.ToDateTime() <= t2;
     }
 
-    [Obsolete("Invalid conversion.", true)]
-    public byte ToByte(IFormatProvider? provider)
+    public static bool operator >=(BaseDate t1, DateTime t2)
     {
-        throw new NotImplementedException();
+        return t1.ToDateTime() >= t2;
     }
-
-    [Obsolete("Invalid conversion.", true)]
-    public char ToChar(IFormatProvider? provider)
-    {
-        throw new NotImplementedException();
-    }
-
-    #endregion
+#endregion
 }
